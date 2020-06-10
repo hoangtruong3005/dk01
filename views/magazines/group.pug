@@ -1,0 +1,24 @@
+extends ../layouts/common
+
+block content
+  div 
+    h2 List Magazine
+  table
+    tr
+      th Name
+      th Author
+      th Action
+    each magazine in magazines
+      tr
+        td= magazine.name
+        td= magazine.author
+        td
+          div(class="actions-button")
+            form(action=`/magazines/delete/${magazine.id}?_method=DELETE` method="POST")
+              button delete
+            a(href=`/magazines/update/${magazine.id}`)
+              button update
+    div count author
+    p= count
+  a(class="app-link" href="/") Go home
+  

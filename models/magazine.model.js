@@ -8,6 +8,7 @@ const {
   updateMagazine,
   actUpdateMagazine,
   actDeleteMagazine,
+  group,
 } = require("../controllers/magazine.controller");
 
 const router = express.Router();
@@ -17,6 +18,7 @@ router.get("/", getMagazines);
 router.get("/search", getMagazine);
 router.get("/create", createMagazine);
 router.get("/update/:id", updateMagazine);
+router.get("/group", group);
 
 // POST method
 router.post("/create", addMagazine);

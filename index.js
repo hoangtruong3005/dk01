@@ -4,8 +4,7 @@ var bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 
 const magazineRouter = require("./models/magazine.model");
-
-var port = 8082;
+var PORT = 8000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,10 +15,10 @@ app.set("view engine", "pug");
 app.set("views", "./views");
 
 app.get("/", (req, res) => {
-  res.render("home");
+  res.render("layouts/home_");
 });
 app.use("/magazines", magazineRouter);
 
-app.listen(port, function () {
-  console.log("server listening on port:" + port);
+app.listen(PORT, function () {
+  console.log(`server running on http://localhost:${PORT}`);
 });

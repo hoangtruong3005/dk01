@@ -6,12 +6,16 @@ const magazineTamp = fs.readFileSync("db.json");
 
 magazines = JSON.parse(magazineTamp).magazines;
 
+//GET METHOD ------------------
+
+// get all
 module.exports.getMagazines = (req, res) => {
   res.render("magazines", {
     magazines,
   });
 };
 
+// get a item
 module.exports.getMagazine = (req, res) => {
   const name = req.query.q;
 
@@ -23,21 +27,30 @@ module.exports.getMagazine = (req, res) => {
   });
 };
 
-module.exports.group = (req, res) => {
-  const by = req.query.by;
-
-  const tamp = magazines.filter((item) => item[by] === by);
-
-  console.log("tamp", tamp);
-  res.render("magazines/magazine", {
-    magazine: tamp[0],
-  });
-};
-
-// Render create form
+// Create form
 module.exports.createMagazine = (req, res) => {
   res.render("magazines/create", {});
 };
+
+// Update form
+module.exports.updateMagazine = (req, res) => {
+  res.render("layouts/update_", { id: req.params.id });
+};
+
+// get group by
+module.exports.group = (req, res) => {
+  const type = req.query.type;
+
+  const tamp = magazines.filter((item) => item.author === type);
+
+  console.log("tamp", tamp);
+  res.render("magazines/group", {
+    magazines: tamp,
+    count: tamp.length,
+  });
+};
+
+// POST METHOD ------------------
 
 // Add a new magazine
 module.exports.addMagazine = (req, res) => {
@@ -45,11 +58,6 @@ module.exports.addMagazine = (req, res) => {
 
   fs.writeFileSync("./db.json", JSON.stringify({ magazines: magazines }));
   res.redirect("/magazines");
-};
-
-// Render update form
-module.exports.updateMagazine = (req, res) => {
-  res.render("magazines/update", { id: req.params.id });
 };
 
 // update a magazine

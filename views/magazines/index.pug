@@ -1,18 +1,6 @@
 extends ../layouts/common
 
 block content
-  h1 Magazines
-  a(href="/magazines/create")
-    button Create
-  form(action="/magazines/search" method="GET")
-      input(type="text" name= "q" required)
-      button(class="btn-ml") Search
-  form(action="/magazines/group" method="GET")
-    select(name="by")
-      option(value="name") name
-      option(value="author") author
-    button(class="btn-ml") Group
-
   div 
     h2 List Magazine
   table
@@ -30,3 +18,5 @@ block content
               button delete
             a(href=`/magazines/update/${magazine.id}`)
               button update
+  a(class="app-link" href="/") Go home
+  

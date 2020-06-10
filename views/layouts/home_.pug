@@ -1,0 +1,18 @@
+include ./common
+
+block content
+  a(href = "/magazines")
+    button All Magazines
+
+  form(action="/magazines/search" method="GET")
+      label name
+      input(type="text" name= "q" required)
+      button(class="btn-ml") Search
+
+  form(action="/magazines/group" method="GET")
+    label type group
+    input(type="text" name= "type" required)
+    button(class="btn-ml") Group
+    
+  a(href= "/magazines/create") 
+    button Create

@@ -1,9 +1,9 @@
-extends ../layouts/common
+extends ./common
 
 block content
 
     h1 CreateMagazines
-    form(action=`/magazines/update/${id}` method="PUT")
+    form(action=`/magazines/update/${id}?_method=PUT` method="post")
         label Name: &nbsp;
         input(type="text" name="name")
         br
