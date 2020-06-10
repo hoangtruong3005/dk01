@@ -1,0 +1,16 @@
+extends ../layouts/common
+
+block content
+
+    h1 CreateMagazines
+    form(action=`/magazines/update/${id}?_method=PUT` method="post")
+        label Name: &nbsp;
+        input(type="text" name="name")
+        br
+        label Price: &nbsp;
+        input(type="number" name="sprice")
+        br 
+        label Authur: &nbsp;
+        input(type="text" name="authur")
+        br
+        button Create

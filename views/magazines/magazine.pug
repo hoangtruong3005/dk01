@@ -1,0 +1,15 @@
+extends ../layouts/common
+
+block content
+  h1 Magazine
+  table
+    tr
+      th name
+      th author
+    tr
+      td= magazine.name
+      td= magazine.author
+  div 
+    a(href="/magazines" class="app-link") Go home
+
+  

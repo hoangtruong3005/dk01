@@ -1,0 +1,18 @@
+extends ../layouts/common
+
+block content
+
+    h1 CreateMagazines
+
+    form(action="/magazines/create" method="post")
+        label Name: &nbsp;
+        input(type="text" name="name")
+        br
+        label Price: &nbsp;
+        input(type="number" name="price")
+        br 
+        label Author: &nbsp;
+        input(type="text" name="author")
+        br
+        button Create
+    a(class="app-link" href="/magazines") Go home
